@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import'./navbar.scss'
-// import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 export default function Navbar() {
   const [active, setActive]=useState(false);
   const [open, setopen]=useState(false);
+  const {pathname}=useLocation();
   const isActive=()=>{
     window.scrollY > 0 ? setActive(true): setActive(false);
 
@@ -22,20 +23,20 @@ export default function Navbar() {
   }
   return (
     <div >
-      <div className={active ? "navbar active":"navbar"}>
+      <div className={(active || pathname !=='/' )? "navbar active":"navbar"}>
 
         <div className="container">
           <div className="logo">
-            {/* <Link to="/"> */}
+            <Link to="/" className='link'>
             <span className="text">PakFreelance</span>
-            {/* </Link> */}
+            </Link>
             <span className="dot">.</span>
             </div>
             <div className="links">
-              <span>Business</span>
-              <span>Explore</span>
-              <span>English</span>
-              <span>Sign in</span>
+              <Link className='link' to="">Business</Link>
+              <Link className='link' to="">Explore</Link>
+              <Link className='link' to="">English</Link>
+              <Link className='link' to="">Sign in</Link>
               {!currentUser?.isSeller &&<span>Become a Seller</span>}
               {!currentUser && <button>Join</button>}
               {
@@ -46,25 +47,32 @@ export default function Navbar() {
                    {open && <div className="options d-flex flex-column ">
                      { currentUser?.isSeller &&(
                       <>
-                      <span>Gigs</span>
-                      <span>Add New Gig</span>
+                      <Link className='link' to="/mygigs">Gigs</Link>
+                      <Link className='link' to="/add">Add New Gig</Link>
                       </>
                      )}
-                     <span>Orders</span>
-                     <span>Messages</span>
-                     <span>Logout</span>
+                     <Link className='link' to="/orders">Orders</Link>
+                     <Link className='link' to="/messages">Messages</Link>
+                     <Link className='link' to="/logout">Logout</Link>
                     </div>}
                   </div>
                 )
               }
               </div>
         </div>
-       {active && <> <hr />
+       {(active || pathname !=='/') && <> <hr />
         <div className="container">
 
         <div className="menu">
-          <span>jfj</span>
-          <span>fj</span>
+          <Link className='link menuLink' to="/">Graphics & Design</Link>
+          <Link className='link' to="/">Video & Animation</Link>
+          <Link className='link' to="/">Writing & Translation</Link>
+          <Link className='link' to="/">AI Services</Link>
+          <Link className='link' to="/">Digital Marketing</Link>
+          <Link className='link' to="/">Music & Audio</Link>
+          <Link className='link' to="/">Programming & Tech</Link>
+          <Link className='link' to="/">Business</Link>
+          <Link className='link' to="/">Lifestyle</Link>
         </div>
         </div></>}
       </div>

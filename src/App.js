@@ -70,9 +70,9 @@ function App() {
     }
   ])
   return (
-    <div className="App">
-   
-   <Navbar/>
+    <div>
+   <RouterProvider router={router}/>
+  
     </div>
   );
 }
