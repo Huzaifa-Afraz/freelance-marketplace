@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+.featured{
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    background-color: $primary-color;
+    color: white;
+    .container{
+        display: flex;
+        align-items: center;
+    }
+}
