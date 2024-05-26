@@ -6,10 +6,10 @@ export default function Featured() {
         <div className="container">
             <div className="row">
             <div className="left col-md-6">
-                <h1>Find the right freelance service, right away</h1>
+                <h1>Find the right <i>freelance</i> service, right away</h1>
                 <div className="search">
                     <div className="searchInput">
-                        <img src="./images/search.png" alt="search icon" />
+                        <img src="./images/search.svg" alt="search icon" />
                         <input type="text"  placeholder='Search For Any Service...'/>
                     </div>
                     <button>Search</button>
